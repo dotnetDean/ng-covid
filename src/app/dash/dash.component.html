@@ -1,0 +1,30 @@
+<mat-card>
+  <h2>Global</h2>
+  <h3>Confirmed: {{ global?.confirmed.value }}</h3>
+  <h3>Recovered: {{ global?.recovered.value }}</h3>
+  <h3>Deaths: {{ global?.deaths.value }}</h3>
+</mat-card>
+
+<mat-card>
+  <h2>{{ selectedCountry }}</h2>
+  <mat-form-field>
+    <mat-select [(value)]="selectedCountry">
+      <mat-option *ngFor="let c of countryOptions" [value]="c.code">
+        {{ c.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- <p>You selected: {{ selectedCountry }}</p> -->
+  <div *ngIf="country">
+    <h3>Confirmed: {{ country?.confirmed.value }}</h3>
+    <h3>Recovered: {{ country?.recovered.value }}</h3>
+    <h3>Deaths: {{ country?.deaths.value }}</h3>
+  </div>
+  <div *ngIf="!country">No data for {{ selectedCountry }}</div>
+</mat-card>
+
+<pre>{{ global | json }}</pre>
+<pre>{{ country | json }}</pre>
+<pre>{{ iso3 | json }}</pre>
+<pre>{{ countries | json }}</pre>
