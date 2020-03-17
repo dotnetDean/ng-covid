@@ -5,8 +5,8 @@
   <h3>Deaths: {{ global?.deaths.value }}</h3>
 </mat-card>
 
-<mat-card>
-  <h2>{{ selectedCountry }}</h2>
+<mat-card color="secondary">
+  <h2>{{ getCountryNameByCode(selectedCountry) }}</h2>
   <mat-form-field>
     <mat-select [(value)]="selectedCountry">
       <mat-option *ngFor="let c of countryOptions" [value]="c.code">
@@ -21,7 +21,9 @@
     <h3>Recovered: {{ country?.recovered.value }}</h3>
     <h3>Deaths: {{ country?.deaths.value }}</h3>
   </div>
-  <div *ngIf="!country">No data for {{ selectedCountry }}</div>
+  <div *ngIf="!country">
+    No data for {{ getCountryNameByCode(selectedCountry) }}
+  </div>
 </mat-card>
 
 <pre>{{ global | json }}</pre>
