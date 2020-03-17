@@ -1,13 +1,18 @@
 <mat-card>
-  <h2>{{ title }} Case Data</h2>
   Confirmed
-  <h2>
-    {{ data?.confirmed.value }}
-  </h2>
-  Recovered
-  <h2 class="green-text">{{ data?.recovered.value }}</h2>
+  <h1>
+    {{ data.confirmed.value }}
+  </h1>
+  Recovered [
+  {{ Math.round((data.recovered.value / data.confirmed.value) * 100) }}% ]
+  <h1 class="green-text">
+    {{ data.recovered.value }}
+  </h1>
   <span>
-    Deaths
+    Deaths [
+    {{ Math.round((data.deaths.value / data.confirmed.value) * 100) }}% ]
   </span>
-  <h2 class="red-text">{{ data?.deaths.value }}</h2>
+  <h1 class="red-text">
+    {{ data.deaths.value }}
+  </h1>
 </mat-card>

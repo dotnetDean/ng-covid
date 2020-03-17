@@ -1,8 +1,10 @@
 <mat-card>
-  <app-case-card title="Global" [data]="global"></app-case-card>
+  <h2>Global Case Data</h2>
+  <app-case-card *ngIf="global" [data]="global"></app-case-card>
 </mat-card>
 
 <mat-card>
+  <h2>{{ getCountryNameByCode(selectedCountry) }} Case Data</h2>
   <mat-form-field>
     <mat-label>Select a country </mat-label>
     <mat-select [(value)]="selectedCountry">
@@ -12,11 +14,7 @@
     </mat-select>
   </mat-form-field>
 
-  <app-case-card
-    *ngIf="country"
-    [title]="getCountryNameByCode(selectedCountry)"
-    [data]="country"
-  ></app-case-card>
+  <app-case-card *ngIf="country" [data]="country"></app-case-card>
 
   <div *ngIf="!country">
     No data for {{ getCountryNameByCode(selectedCountry) }}

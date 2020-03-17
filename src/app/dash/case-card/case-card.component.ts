@@ -8,8 +8,9 @@ import { Component, OnInit, Input } from "@angular/core";
 export class CaseCardComponent implements OnInit {
   constructor() {}
 
+  Math = Math;
+
   @Input() data;
-  @Input() title;
 
   ngOnInit(): void {}
 }
