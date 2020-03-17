@@ -1,12 +1,12 @@
 <mat-card>
-  <h2>Global</h2>
+  <h2>Global Case Data</h2>
   <h3>Confirmed: {{ global?.confirmed.value }}</h3>
   <h3>Recovered: {{ global?.recovered.value }}</h3>
   <h3>Deaths: {{ global?.deaths.value }}</h3>
 </mat-card>
 
 <mat-card color="secondary">
-  <h2>{{ getCountryNameByCode(selectedCountry) }}</h2>
+  <h2>{{ getCountryNameByCode(selectedCountry) }} Case Data</h2>
   <mat-form-field>
     <mat-select [(value)]="selectedCountry">
       <mat-option *ngFor="let c of countryOptions" [value]="c.code">
@@ -26,7 +26,7 @@
   </div>
 </mat-card>
 
-<pre>{{ global | json }}</pre>
+<!-- <pre>{{ global | json }}</pre>
 <pre>{{ country | json }}</pre>
 <pre>{{ iso3 | json }}</pre>
-<pre>{{ countries | json }}</pre>
+<pre>{{ countries | json }}</pre> -->
