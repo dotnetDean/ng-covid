@@ -11,7 +11,7 @@ import { forkJoin } from "rxjs";
 export class DashComponent implements OnInit {
   constructor(private covidDataService: CovidDataService) {}
 
-  private _selectedCountry = "GBR";
+  private _selectedCountry = "GB";
   public get selectedCountry(): string {
     return this._selectedCountry;
   }
@@ -57,11 +57,11 @@ export class DashComponent implements OnInit {
     }
   }
 
-  // getCountryNameByCode(code) {
-  //   let result;
-  //   if (this.countryOptions.length > 0) {
-  //     result = this.countryOptions.find(x => x.code === code);
-  //     return result;
-  //   }
-  // }
+  getCountryNameByCode(code) {
+    let result;
+    if (this.countryOptions.length > 0) {
+      result = this.countryOptions.find(x => x.code === code);
+      return result.name;
+    }
+  }
 }
