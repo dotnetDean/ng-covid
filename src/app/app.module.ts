@@ -9,9 +9,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatCardModule } from "@angular/material/card";
 import { MatSelectModule } from "@angular/material/select";
+import { CaseCardComponent } from './dash/case-card/case-card.component';
 
 @NgModule({
-  declarations: [AppComponent, DashComponent],
+  declarations: [AppComponent, DashComponent, CaseCardComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

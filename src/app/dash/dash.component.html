@@ -1,13 +1,10 @@
 <mat-card>
-  <h2>Global Case Data</h2>
-  <h3>Confirmed: {{ global?.confirmed.value }}</h3>
-  <h3>Recovered: {{ global?.recovered.value }}</h3>
-  <h3>Deaths: {{ global?.deaths.value }}</h3>
+  <app-case-card title="Global" [data]="global"></app-case-card>
 </mat-card>
 
-<mat-card color="secondary">
-  <h2>{{ getCountryNameByCode(selectedCountry) }} Case Data</h2>
+<mat-card>
   <mat-form-field>
+    <mat-label>Select a country </mat-label>
     <mat-select [(value)]="selectedCountry">
       <mat-option *ngFor="let c of countryOptions" [value]="c.code">
         {{ c.name }}
@@ -15,12 +12,12 @@
     </mat-select>
   </mat-form-field>
 
-  <!-- <p>You selected: {{ selectedCountry }}</p> -->
-  <div *ngIf="country">
-    <h3>Confirmed: {{ country?.confirmed.value }}</h3>
-    <h3>Recovered: {{ country?.recovered.value }}</h3>
-    <h3>Deaths: {{ country?.deaths.value }}</h3>
-  </div>
+  <app-case-card
+    *ngIf="country"
+    [title]="getCountryNameByCode(selectedCountry)"
+    [data]="country"
+  ></app-case-card>
+
   <div *ngIf="!country">
     No data for {{ getCountryNameByCode(selectedCountry) }}
   </div>

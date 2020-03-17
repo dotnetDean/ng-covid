@@ -1,0 +1,13 @@
+<mat-card>
+  <h2>{{ title }} Case Data</h2>
+  Confirmed
+  <h2>
+    {{ data?.confirmed.value }}
+  </h2>
+  Recovered
+  <h2 class="green-text">{{ data?.recovered.value }}</h2>
+  <span>
+    Deaths
+  </span>
+  <h2 class="red-text">{{ data?.deaths.value }}</h2>
+</mat-card>
