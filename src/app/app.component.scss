@@ -8,3 +8,14 @@
      Every toolbar row uses a flexbox row layout. */
   flex: 1 1 auto;
 }
+footer {
+  mat-card {
+    font-size: small;
+    flex-wrap: wrap;
+    border-top: 5px solid #c2185a;
+  }
+}
+
+.page-footer {
+  // background-color: #c2185a;
+}
