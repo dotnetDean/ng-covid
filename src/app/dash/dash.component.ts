@@ -38,10 +38,6 @@ export class DashComponent implements OnInit {
       this.global = responses[0];
       this.countries = responses[1]["countries"];
       this.country = responses[2];
-
-      console.log(this.countries)
-      console.log(this.country)
-
     });
   }
 
