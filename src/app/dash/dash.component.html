@@ -4,17 +4,17 @@
 </mat-card>
 
 <mat-card>
-  <h2>{{ getCountryNameByCode(selectedCountry) }} Cases</h2>
+  <h2>{{ getCountryNameByIso3(selectedCountryIso3) }} Cases</h2>
   <mat-form-field>
     <mat-label>Select a country </mat-label>
-    <mat-select [(value)]="selectedCountry">
-      <mat-option *ngFor="let c of countryOptions" [value]="c.code">
+    <mat-select [(value)]="selectedCountryIso3">
+      <mat-option *ngFor="let c of countries" [value]="c.iso3">
         {{ c.name }}
       </mat-option>
     </mat-select>
   </mat-form-field>
   <app-case-card *ngIf="country" [data]="country"></app-case-card>
   <div *ngIf="!country">
-    No data for {{ getCountryNameByCode(selectedCountry) }}
+    No data for {{ getCountryNameByIso3(selectedCountryIso3) }}
   </div>
 </mat-card>

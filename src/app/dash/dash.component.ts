@@ -11,56 +11,44 @@ import { forkJoin } from "rxjs";
 export class DashComponent implements OnInit {
   constructor(private covidDataService: CovidDataService) {}
 
-  private _selectedCountry = "GB";
-  public get selectedCountry(): string {
-    return this._selectedCountry;
+  private _selectedCountryIso3 = "GBR";
+  public get selectedCountryIso3(): string {
+    return this._selectedCountryIso3;
   }
-  public set selectedCountry(v: string) {
+  public set selectedCountryIso3(v: string) {
     this.covidDataService.getDataByCountry(v).subscribe(
       country => (this.country = country),
       error => (this.country = undefined)
     );
-    this._selectedCountry = v;
+    this._selectedCountryIso3 = v;
   }
 
   global: Global;
-  countries: {};
-  countriesData: {};
-  countryOptions = [];
-
+  countries = [];
   country;
-  iso3;
 
   ngOnInit() {
     const observables = forkJoin(
       this.covidDataService.getGlobalData(),
       this.covidDataService.getCountries(),
-      this.covidDataService.getDataByCountry(this.selectedCountry)
+      this.covidDataService.getDataByCountry(this.selectedCountryIso3)
     );
     observables.subscribe(responses => {
+      console.log(responses)
       this.global = responses[0];
-      this.country = responses[2];
       this.countries = responses[1]["countries"];
-      this.iso3 = responses[1]["iso3"];
+      this.country = responses[2];
 
-      this.mapCountryCodes();
+      console.log(this.countries)
+      console.log(this.country)
+
     });
   }
 
-  private mapCountryCodes() {
-    for (let [key, value] of Object.entries(this.countries)) {
-      this.countryOptions.push({
-        name: key,
-        code: value,
-        iso3: this.iso3[value as string]
-      });
-    }
-  }
-
-  getCountryNameByCode(code) {
+  getCountryNameByIso3(iso3) {
     let result;
-    if (this.countryOptions.length > 0) {
-      result = this.countryOptions.find(x => x.code === code);
+    if (this.countries.length > 0) {
+      result = this.countries.find(x => x.iso3 === iso3);
       return result.name;
     }
   }
